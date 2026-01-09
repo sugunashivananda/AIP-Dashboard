@@ -1,132 +1,147 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-// Theme definition
+// Theme for colors, spacing, typography
 const theme = {
   colors: {
     background: '#fff',
     border: '#E8E8E8',
-    textPrimary: '#1A1A1A',
-    textSecondary: '#3D3D3D',
-    textTertiary: '#626262',
-    link: '#0269D8',
-    linkHover: '#0074D9',
+    cardBorder: '#E8E8E8',
+    title: '#1A1A1A',
+    subtitle: '#404040',
+    label: '#636363',
+    value: '#3D3D3D',
+    link: '#0149D8',
+    linkHover: '#0073A7',
   },
   spacing: {
-    xs: '2px',
-    sm: '4px',
-    md: '8px',
-    lg: '16px',
-    xl: '24px',
+    cardPadding: '24px',
+    sectionSpacing: '16px',
+    rowSpacing: '8px',
+    itemSpacing: '4px',
+    labelValueSpacing: '2px',
   },
   radii: {
     card: '8px',
   },
-  fontSizes: {
-    title: '20px',
-    subtitle: '14px',
-    label: '12px',
-    link: '16px',
-  },
-  fontWeights: {
-    medium: 500,
-    regular: 400,
-  },
-  lineHeights: {
-    title: '24px',
-    subtitle: '20px',
-    label: '16px',
-    link: '20px',
+  font: {
+    family: 'Forma DJR UI, Arial, sans-serif',
+    size: {
+      title: '20px',
+      subtitle: '14px',
+      label: '12px',
+      value: '12px',
+      link: '16px',
+    },
+    weight: {
+      medium: 500,
+      regular: 400,
+    },
+    lineHeight: {
+      title: '24px',
+      subtitle: '20px',
+      label: '16px',
+      value: '16px',
+      link: '20px',
+    },
   },
 };
 
 // Styled Components
 const Card = styled.section`
   background: ${({ theme }) => theme.colors.background};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
   border-radius: ${({ theme }) => theme.radii.card};
-  padding: ${({ theme }) => theme.spacing.xl};
-  width: 100%;
-  max-width: 462px;
+  padding: ${({ theme }) => theme.spacing.cardPadding};
+  width: 462px;
   box-sizing: border-box;
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.sectionSpacing};
 `;
 
 const TitleBlock = styled.header`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  gap: ${({ theme }) => theme.spacing.itemSpacing};
 `;
 
 const TitleRow = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
+  gap: ${({ theme }) => theme.spacing.itemSpacing};
 `;
 
-const IconCircle = styled.span`
+const TitleIcon = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background: none;
 `;
 
 const Title = styled.h2`
-  color: ${({ theme }) => theme.colors.textPrimary};
-  font-size: ${({ theme }) => theme.fontSizes.title};
-  font-weight: ${({ theme }) => theme.fontWeights.medium};
-  line-height: ${({ theme }) => theme.lineHeights.title};
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.title};
+  font-weight: ${({ theme }) => theme.font.weight.medium};
+  color: ${({ theme }) => theme.colors.title};
+  line-height: ${({ theme }) => theme.font.lineHeight.title};
   margin: 0;
 `;
 
 const Subtitle = styled.p`
-  color: ${({ theme }) => theme.colors.textTertiary};
-  font-size: ${({ theme }) => theme.fontSizes.subtitle};
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
-  line-height: ${({ theme }) => theme.lineHeights.subtitle};
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.subtitle};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+  color: ${({ theme }) => theme.colors.subtitle};
+  line-height: ${({ theme }) => theme.font.lineHeight.subtitle};
   margin: 0;
 `;
 
-const DetailsSection = styled.section`
+const DetailsSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.sectionSpacing};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  padding-bottom: ${({ theme }) => theme.spacing.md};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  padding-bottom: 8px;
 `;
 
-const DetailsRows = styled.div`
+const DetailsRow = styled.div`
   display: flex;
   flex-direction: row;
-  gap: ${({ theme }) => theme.spacing.lg};
+  gap: ${({ theme }) => theme.spacing.rowSpacing};
 `;
 
 const DetailsColumn = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.sm};
-  flex: 1;
+  gap: ${({ theme }) => theme.spacing.itemSpacing};
 `;
 
 const Label = styled.span`
-  color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: ${({ theme }) => theme.fontSizes.label};
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
-  line-height: ${({ theme }) => theme.lineHeights.label};
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.label};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+  color: ${({ theme }) => theme.colors.label};
+  line-height: ${({ theme }) => theme.font.lineHeight.label};
 `;
 
 const ValueRow = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
+  gap: ${({ theme }) => theme.spacing.labelValueSpacing};
 `;
 
 const Value = styled.span`
-  color: ${({ theme }) => theme.colors.textTertiary};
-  font-size: ${({ theme }) => theme.fontSizes.label};
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
-  line-height: ${({ theme }) => theme.lineHeights.label};
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.value};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
+  color: ${({ theme }) => theme.colors.value};
+  line-height: ${({ theme }) => theme.font.lineHeight.value};
 `;
 
 const CalendarIcon = styled.span`
@@ -135,36 +150,35 @@ const CalendarIcon = styled.span`
   justify-content: center;
   width: 20px;
   height: 20px;
+  margin-right: 4px;
 `;
 
-const LinkRow = styled.div`
-  margin-top: ${({ theme }) => theme.spacing.lg};
+const HyperlinkRow = styled.div`
+  margin-top: ${({ theme }) => theme.spacing.sectionSpacing};
 `;
 
-const Hyperlink = styled.a<{ $focusVisible?: boolean }>`
+const Link = styled.a`
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.link};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
   color: ${({ theme }) => theme.colors.link};
-  font-size: ${({ theme }) => theme.fontSizes.link};
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
-  line-height: ${({ theme }) => theme.lineHeights.link};
+  line-height: ${({ theme }) => theme.font.lineHeight.link};
   text-decoration: underline;
   cursor: pointer;
   outline: none;
   transition: color 0.2s;
-  &:hover {
+  &:hover, &:focus {
     color: ${({ theme }) => theme.colors.linkHover};
-  }
-  &:focus {
-    color: ${({ theme }) => theme.colors.linkHover};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.linkHover};
   }
 `;
 
-// SVGs
+// SVGs for icons
 const DocumentIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-    <rect x="4" y="4" width="16" height="16" rx="4" fill="#1A1A1A" />
-    <rect x="7" y="8" width="10" height="2" rx="1" fill="#fff" />
-    <rect x="7" y="12" width="10" height="2" rx="1" fill="#fff" />
+  <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <rect x="6" y="6" width="20" height="20" rx="4" fill="#1A1A1A" />
+    <rect x="10" y="10" width="12" height="2" rx="1" fill="#fff" />
+    <rect x="10" y="14" width="12" height="2" rx="1" fill="#fff" />
+    <rect x="10" y="18" width="8" height="2" rx="1" fill="#fff" />
   </svg>
 );
 
@@ -172,26 +186,26 @@ const CalendarDayIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
     <rect x="2" y="4" width="16" height="14" rx="3" fill="#3D3D3D" />
     <rect x="6" y="8" width="8" height="2" rx="1" fill="#fff" />
+    <rect x="6" y="12" width="5" height="2" rx="1" fill="#fff" />
   </svg>
 );
 
 // Main Component
-const PlanDetails: React.FC = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Card aria-labelledby="plan-details-title">
+const SubscriptionCard: React.FC = () => (
+  <ThemeProvider theme={theme}>
+    <Card aria-labelledby="subscription-title">
+      <CardContent>
         <TitleBlock>
           <TitleRow>
-            <IconCircle>
+            <TitleIcon aria-hidden="true">
               <DocumentIcon />
-            </IconCircle>
-            <Title id="plan-details-title">Subscription information</Title>
+            </TitleIcon>
+            <Title id="subscription-title">Subscription information</Title>
           </TitleRow>
-          {/* Subtitle is optional, shown if needed */}
           <Subtitle>Supporting text</Subtitle>
         </TitleBlock>
         <DetailsSection>
-          <DetailsRows>
+          <DetailsRow>
             <DetailsColumn>
               <Label>Plan ID</Label>
               <ValueRow>
@@ -201,31 +215,29 @@ const PlanDetails: React.FC = () => {
             <DetailsColumn>
               <Label>Start date</Label>
               <ValueRow>
-                <CalendarIcon>
+                <CalendarIcon aria-hidden="true">
                   <CalendarDayIcon />
                 </CalendarIcon>
-                <Value>[Mar 31, 2025]</Value>
+                <Value>[Mar 31,  2025]</Value>
               </ValueRow>
             </DetailsColumn>
             <DetailsColumn>
               <Label>Auto-renewal date</Label>
               <ValueRow>
-                <CalendarIcon>
+                <CalendarIcon aria-hidden="true">
                   <CalendarDayIcon />
                 </CalendarIcon>
-                <Value>[Mar 31, 2026]</Value>
+                <Value>[Mar 31,  2026]</Value>
               </ValueRow>
             </DetailsColumn>
-          </DetailsRows>
+          </DetailsRow>
         </DetailsSection>
-        <LinkRow>
-          <Hyperlink href="#" tabIndex={0} aria-label="Cancel auto-renewal">
-            Cancel auto-renewal
-          </Hyperlink>
-        </LinkRow>
-      </Card>
-    </ThemeProvider>
-  );
-};
+        <HyperlinkRow>
+          <Link href="#" tabIndex={0} aria-label="Cancel auto-renewal">Cancel auto-renewal</Link>
+        </HyperlinkRow>
+      </CardContent>
+    </Card>
+  </ThemeProvider>
+);
 
-export default PlanDetails;
+export default SubscriptionCard;
