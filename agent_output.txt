@@ -1,0 +1,3 @@
+Test Case ID: TC001
+Test Scenario: Verify conversion of PlanDetails frame with nested components
+Input: Figma JSON file (/app/a8a2bf4b-9361-4322-a669-5fd0fe597e97/1 (1)/1.json) containing PlanDetails frame
