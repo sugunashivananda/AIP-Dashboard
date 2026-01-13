@@ -3,22 +3,27 @@ import { DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = {
   colors: {
-    primary: '#3f51b5',
-    secondary: '#f50057',
-    background: '#f4f6f8',
+    primary: '#2563eb',
+    secondary: '#f1f5f9',
+    accent: '#f59e42',
+    background: '#f8fafc',
     surface: '#fff',
-    text: '#222',
-    textSecondary: '#666',
-    border: '#e0e0e0',
-    badgeSuccess: '#4caf50',
-    badgeWarning: '#ff9800',
-    badgeError: '#f44336',
-    sidebarBg: '#212121',
-    sidebarText: '#fff',
-    sidebarActive: '#3949ab',
-    focus: '#1976d2',
+    text: '#1e293b',
+    muted: '#64748b',
+    border: '#e2e8f0',
+    success: '#22c55e',
+    warning: '#fbbf24',
+    danger: '#ef4444',
+    badgeBg: '#e0e7ef',
+    badgeText: '#2563eb',
   },
-  spacing: (factor: number) => `${factor * 8}px`,
+  spacing: {
+    xs: '4px',
+    sm: '8px',
+    md: '16px',
+    lg: '24px',
+    xl: '32px',
+  },
   fontSizes: {
     xs: '12px',
     sm: '14px',
@@ -27,15 +32,14 @@ const theme: DefaultTheme = {
     xl: '24px',
     xxl: '32px',
   },
-  fontWeights: {
-    regular: 400,
-    medium: 500,
-    bold: 700,
-  },
   radii: {
     sm: '4px',
     md: '8px',
     lg: '16px',
+  },
+  shadows: {
+    sm: '0 1px 2px rgba(16,30,54,0.04)',
+    md: '0 2px 8px rgba(16,30,54,0.08)',
   },
 };
 
